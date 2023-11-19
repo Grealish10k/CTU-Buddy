@@ -1,0 +1,2 @@
+# CTU-Buddy
+ student portal

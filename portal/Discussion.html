@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CTU</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100, 100i, 400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-campusonline.css" rel="stylesheet">
+    <link href="css/ctu.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet" media="screen">
+    
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/slider.js"></script>
+    <script src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    
+    <script language="javascript">
+        function savedocument() {
+            document.forms[0].cfunction.value = "save";
+            document.forms[0].submit();
+        }
+    </script>
+       <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            color: black;
+            padding: 20px;
+            background-color: #86e18fe2;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border:  black;
+            
+        }
+        .discussion {
+            margin-top: 20px;
+        }
+        .post {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 5px solid rgb(0, 255, 195);
+            border-radius: 8px;
+        }
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .user-profile {
+            display: flex;
+            align-items: center;
+        }
+
+
+        .user-name {
+            font-weight: bold;
+        }
+        .post-content {
+            margin-top: 10px;
+        }
+        body {
+  background-image: url('road.jpg');
+        background-repeat:no repeat;
+        background-attachment: fixed;
+        background-size:100% 100%;
+        content: center;
+        }
+    </style>
+    </head>
+    <body data-new-gr-c-s-check-loaded="14.1039.0" data-gr-ext-installed="">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="fullfit_container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+              </button>
+              <a href="#" class="navbar-brand"><img src="../image/ctu-logo.jpg" alt="CTU"></a>
+            </div>
+            <!-- Collection of nav links and other content for toggling -->
+            <div id="navbarCollapse" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="index.html">Home</a></li>  
+                        <li><a href="Timetable.html">Timetable</a></li>
+                        <li><a href="Discussion.html">Discussion</a></li>
+                        <li><a href="Share Resources.html">Share Resources</a></li>
+                        <li><a href="Contact us.html">Contact us</a></li>
+                        <li><a href="About.html">About</a></li>
+                        
+                    </ul>
+                </ul>
+       </div>
+        </div>
+    </nav>
+ 
+</head>
+ 
+    <div class="container">
+        <h1>Discussion Platform</h1>
+        
+        <div class="discussion">
+            <div class="post">
+                <div class="post-header">
+                    <div class="user-profile">
+                        
+                        <div class="user-name">Steven</div>
+                    </div>
+                    <div class="post-time">2 hours ago</div>
+                </div>
+                <div class="post-content">
+                    <p>Hey everyone, I'm having trouble with the calculus assignment. Can someone help me understand the concept of derivatives?</p>
+                </div>
+            </div>
+
+            <!-- More posts go here -->
+        </div>
+
+        <div class="new-post">
+            <h2>Post a New Question</h2>
+            <textarea id="postContent" rows="4" placeholder="Type your question here..."></textarea>
+            <button id="postButton">Post</button>
+        </div>
+    </div>
+
+    <script>
+        const postButton = document.getElementById('postButton');
+        const postContent = document.getElementById('postContent');
+        const discussion = document.querySelector('.discussion');
+
+        postButton.addEventListener('click', () => {
+            const newPost = document.createElement('div');
+            newPost.className = 'post';
+
+            const postHeader = document.createElement('div');
+            postHeader.className = 'post-header';
+
+            const userProfile = document.createElement('div');
+            userProfile.className = 'user-profile';
+
+            const userAvatar = document.createElement('div');
+            userAvatar.className = 'user-avatar';
+
+            const userName = document.createElement('div');
+            userName.className = 'user-name';
+            userName.textContent = 'You';
+
+            userProfile.appendChild(userAvatar);
+            userProfile.appendChild(userName);
+
+            const postTime = document.createElement('div');
+            postTime.className = 'post-time';
+            const now = new Date();
+            postTime.textContent = now.toLocaleString();
+
+            postHeader.appendChild(userProfile);
+            postHeader.appendChild(postTime);
+
+            const postContentDiv = document.createElement('div');
+            postContentDiv.className = 'post-content';
+            const content = postContent.value;
+            postContentDiv.innerHTML = `<p>${content}</p>`;
+
+            newPost.appendChild(postHeader);
+            newPost.appendChild(postContentDiv);
+
+            discussion.appendChild(newPost);
+
+            postContent.value = ''; // Clear the textarea
+        });
+    </script>
+    <div id="footer">
+        <div class="fullfit_container">
+          <p class="footer-block">©2023 CTU-Buddy. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
